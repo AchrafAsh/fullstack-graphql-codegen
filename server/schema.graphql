@@ -1,0 +1,52 @@
+scalar DateTime
+
+type Author {
+    id: Int!
+    displayName: String!
+    picture: String!
+    posts: [Post!]
+    createdAt: DateTime!
+}
+
+type Post {
+    id: Int!
+    author: Author!
+    title: String!
+    content: String
+    comments: [Comment!]
+    createdAt: DateTime!
+    publishedAt: DateTime
+}
+
+type Comment {
+    id: Int!
+    post: Post!
+    username: String!
+    text: String!
+    replyTo: Comment
+    createdAt: DateTime!
+}
+
+type Query {
+    author(id: Int!): Author
+    post(id: Int!): Post
+    allPosts: [Post!]
+}
+
+input CreatePostInput {
+    authorId: Int!
+    title: String!
+    content: String
+}
+
+input CreateCommentInput {
+    username: String!
+    text: String!
+    replyToId: Int
+}
+
+type Mutation {
+    createPost(input: CreatePostInput): Post
+    publishPost(id: Int!): Post
+    createComment(postId: Int!, input: CreateCommentInput): Comment
+}

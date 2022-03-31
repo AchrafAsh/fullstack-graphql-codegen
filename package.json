@@ -1,0 +1,40 @@
+{
+    "name": "fullstack-graphql-codegen",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev:server": "nodemon server/src/index.ts",
+        "dev:client": "npm run start --prefix client",
+        "dev": "concurrently npm:dev:server npm:dev:client",
+        "build:server": "ts-node server/src/index.ts",
+        "build:client": "npm run build --prefix client",
+        "build": "npm:build:server && npm:build:client",
+        "codegen": "graphql-codegen --config codegen.yml"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@graphql-codegen/cli": "^2.6.2",
+        "@graphql-tools/schema": "^8.3.5",
+        "cors": "^2.8.5",
+        "express": "^4.17.3",
+        "express-graphql": "^0.12.0",
+        "graphql": "^16.3.0",
+        "graphql-import-node": "^0.0.4",
+        "typescript": "^4.6.2"
+    },
+    "devDependencies": {
+        "@graphql-codegen/cli": "2.6.2",
+        "@graphql-codegen/typescript": "2.4.8",
+        "@graphql-codegen/typescript-operations": "2.3.5",
+        "@graphql-codegen/typescript-react-query": "^3.5.9",
+        "@graphql-codegen/typescript-resolvers": "2.6.1",
+        "@types/cors": "^2.8.12",
+        "@types/express": "^4.17.13",
+        "@types/node": "^17.0.23",
+        "concurrently": "^7.0.0",
+        "nodemon": "^2.0.15",
+        "ts-node": "^10.7.0"
+    }
+}
